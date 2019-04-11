@@ -16,6 +16,10 @@
     • If whence is SEEK_END, the file’s offset is set to the size of the file plus the offset. The offset can be positive or negative.
 
     Because a successful call to lseek returns the new file offset, we can seek zero bytes from the current position to determine the current offset:
+
+    Normally, a file’s current offset must be a non-negative integer. 
+    It is possible, however, that certain devices could allow negative offsets.
+    But for regular files, the offset must be non-negative.
 */
 
 #include <unistd.h>
@@ -54,7 +58,7 @@ int     main(void)
     lseek(fd, -5, SEEK_END); // set the offset to current offset(10) minus 5
     read(fd, buf, 10); // offset now is 5
     printf("lseek(fd, -5, SEEK_END): %s\n", buf);
-    
+
     close(fd);
     return (0);
 }
