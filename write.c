@@ -1,0 +1,5 @@
+/*
+    UNIX kernel that closes all open file descriptors in a process when that process terminates.
+
+
+*/

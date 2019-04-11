@@ -21,7 +21,8 @@
     It is possible, however, that certain devices could allow negative offsets.
     But for regular files, the offset must be non-negative.
 
-    lseek only records the current file offset within the kernel—it does not cause any I/O to take place.
+    lseek only records the current file offset within the kernel(current file offset from file table entry)
+    it does not cause any I/O to take place.
     This offset is then used by the next read or write operation.
 
     The file’s offset can be greater than the file’s current size, in which case the next write to the file will extend the file. 
@@ -48,11 +49,11 @@ int     main(void)
     const char  *content = "0123456789";
     off_t       cur;
 
-    fd = creat("test.txt", 0666);
+    fd = creat("lseek.txt", 0666);
     write(fd, content, 10);
     close(fd);
     bzero(buf, sizeof(buf));
-    fd = open("test.txt", O_RDWR);
+    fd = open("lseek.txt", O_RDWR);
 
     read(fd, buf, 10);
     printf("buf: %s\n", buf); 
@@ -92,9 +93,9 @@ int     main(void)
     close(fd); 
     printf("Current file: \n");
     if (fork() == 0)
-        execl("/bin/ls", "ls", "-l", "test.txt", NULL);
+        execl("/bin/ls", "ls", "-l", "lseek.txt", NULL);
     if (fork() == 0)
-        execl("/usr/bin/od", "od", "-c", "test.txt", NULL);
+        execl("/usr/bin/od", "od", "-c", "lseek.txt", NULL);
     return (0);
 }
 /*
@@ -106,5 +107,5 @@ Current file:
 0000000    0   1   2   3   4   5   6   7   8   9  \0  \0  \0  \0  \0  \0
 0000020   \0  \0  \0  \0   0   1   2   3   4   5   6   7   8   9
 0000036
--rw-r--r--  1 qpeng  2018_july  30 Apr 11 11:52 test.txt
+-rw-r--r--  1 qpeng  2018_july  30 Apr 11 11:52 lseek.txt
 */
