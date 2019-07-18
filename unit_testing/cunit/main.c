@@ -4,6 +4,8 @@
  *  knows where the header is 
  *  brew install pkg-config for the makefile 
  *  i.e. "C_Cpp.default.includePath":["~/.brew/Cellar/cunit/2.1-3/include"]
+ *  resources:
+ *  http://cunit.sourceforge.net/doc/writing_tests.html
  */
 #include <CUnit/CUnit.h> 
 #include <CUnit/Basic.h>
