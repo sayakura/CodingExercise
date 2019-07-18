@@ -28,11 +28,21 @@ void test_maxi(void)
 
 void    run_unit_tesing()
 {
-    CU_initialize_registry(); //initialization
-    CU_pSuite suite = CU_add_suite("suit name", 0, 0); // create a test suite 
- 
+    /**
+     * initialization, The test registry is the 
+     * repository for suites and associated tests
+    */
+    CU_initialize_registry();
+
+    // Creates a new test collection (suite) having the specified name
+    CU_pSuite suite = CU_add_suite("suit name", 0, 0); 
+
+    /**
+     *  Creates a new test having the specified name and test function,
+     *  and registers it with the specified suite.
+    */
     CU_add_test(suite, "test if maxi function return the correct value", test_maxi);
-        // add descrioption and the testing function into the specific suite 
+
 
     CU_basic_set_mode(CU_BRM_VERBOSE); // set verboseness level
     CU_basic_run_tests(); // run all the tests on each suite
