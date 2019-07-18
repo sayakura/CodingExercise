@@ -1,8 +1,0 @@
-{
-    "files.associations": {
-        "inet.h": "c",
-        "iostream": "cpp",
-        "cunit.h": "c",
-        "basic.h": "c"
-    }
-}
