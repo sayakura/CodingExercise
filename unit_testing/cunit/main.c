@@ -45,7 +45,8 @@ void    run_unit_tesing()
 
 
     CU_basic_set_mode(CU_BRM_VERBOSE); // set verboseness level
-    CU_basic_run_tests(); // run all the tests on each suite
+    CU_curses_run_tests();
+    //CU_basic_run_tests(); // run all the tests on each suite
     CU_cleanup_registry(); // clean up
 }
 
