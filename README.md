@@ -1,7 +1,7 @@
 # CodingExercise
 example on various stuff (mainly related to c)
 
-## Directory structure
+## Current Directory structure
 
 ```
 .
